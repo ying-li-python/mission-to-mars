@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mission To Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- CSS styles -->
+    
+</head>
+<body>
+    
+
+<!-- content -->
+<div class="container">
+    
+    <!-- title -->
+    <div class="jumbotron text-center">
+            <h1 class="display-4"><strong>Mission to Mars</strong></h1>
+            <p class="lead">Latest news, Mars facts, and featured photos from NASA!</p>
+            <a class="btn btn-primary btn-md btn-dark" href="/scrape" role="button">Scrape New Data</a>
+    </div>
+    <!-- title -->
+
+    <!-- grid row -->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Latest News</h1>
+            <h4>{{ posts.latest_news_title }}</h4>
+            <p>{{ posts.latest_news }} </p>
+        </div>
+    </div>
+    <!-- grid row  -->
+
+    <!-- grid row -->
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Featured Mars Image</h2>
+            <br>
+            <img src="{{ posts.featured_image }}" alt="featured_image"> 
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Current Weather Data On Mars</h5>
+                    <p class="card-text">{{ posts.mars_weather }}</p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h4>Mars Facts</h4>
+            <br>
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        </div>
+    </div>
+    <!-- grid row -->
+</div>
+<!-- content -->
+
+<br>
+<br>
+<hr>
+
+<!-- content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Mars Hemispheres</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card-deck">
+            {% for post in posts.hemisphere %}
+            <div class="card">
+                <img class="card-img-top" src="{{ post.img_url }}" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div> 
+    
+</div>
+<!-- content -->
+
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- scripts -->
+</body>
+</html>

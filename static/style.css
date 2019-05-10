@@ -1,0 +1,31 @@
+body {
+    background: black;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: white;
+}
+
+.display-4, .lead {
+    color: black;
+}
+
+.card-title, .card-text {
+    color: white;
+}
+
+.card-body {
+    background: black;
+    text-align: center;
+    align-content: center;
+}
+
+.card {
+    margin: 10px;
+    border: none;
+}
+
+tr, th, td {
+    color: white;
+    text-align: left;
+}
